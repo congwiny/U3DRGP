@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
-using UnityEngine.Events;
-
-[System.Serializable]
-public class EventVector3 : UnityEvent<Vector3> 
-{ 
-}
+using System;
 
 public class MouseManager : MonoBehaviour
 {
-    public EventVector3 onMouseClicked;
+    public event Action<Vector3> onMouseClicked;
     RaycastHit hitInfo;
     public static MouseManager Instance;
 
