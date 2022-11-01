@@ -10,6 +10,8 @@ public class MouseManager : MonoBehaviour
     RaycastHit hitInfo;
     public static MouseManager Instance;
 
+    public Texture2D point, doorway, attack, target, arrow;
+
     void Awake()
     {
         if (Instance != null) 
