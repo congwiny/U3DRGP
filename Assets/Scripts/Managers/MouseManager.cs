@@ -13,6 +13,16 @@ public class MouseManager : MonoBehaviour
 {
     public EventVector3 onMouseClicked;
     RaycastHit hitInfo;
+    public static MouseManager Instance;
+
+    void Awake()
+    {
+        if (Instance != null) 
+        {
+            Destroy(gameObject);
+        }
+        Instance = this;
+    }
 
     void Update()
     {
