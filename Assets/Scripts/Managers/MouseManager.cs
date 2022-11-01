@@ -32,7 +32,13 @@ public class MouseManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hitInfo)) 
         {
-             //ÇĞ»»Êó±êÌùÍ¼
+            //ÇĞ»»Êó±êÌùÍ¼
+            switch (hitInfo.collider.gameObject.tag)
+            {
+                case "Ground":
+                    Cursor.SetCursor(target, new Vector2(16, 16), CursorMode.Auto);
+                    break;
+            }
         }
     }
 
