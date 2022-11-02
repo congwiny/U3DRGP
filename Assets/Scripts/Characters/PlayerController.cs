@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
 
     public void MoveToTarget(Vector3 target)
     {
+        //还原agent可移动的状态
+        agent.isStopped = false;
         agent.destination = target;
     }
 
