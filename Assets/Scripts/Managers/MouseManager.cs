@@ -7,6 +7,8 @@ using System;
 public class MouseManager : MonoBehaviour
 {
     public event Action<Vector3> onMouseClicked;
+    //点击敌人
+    public event Action<GameObject> OnEnemyClicked;
     RaycastHit hitInfo;
     public static MouseManager Instance;
 
@@ -52,6 +54,12 @@ public class MouseManager : MonoBehaviour
             if (hitInfo.collider.gameObject.CompareTag("Ground")) 
             {
                 onMouseClicked?.Invoke(hitInfo.point);
+            }
+            //判断点击了敌人
+            if (hitInfo.collider.gameObject.CompareTag("Enemy"))
+            {
+                //把点击的敌人的GameObject传递出去
+                OnEnemyClicked?.Invoke(hitInfo.collider.gameObject);
             }
         }
     }
