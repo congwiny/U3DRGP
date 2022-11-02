@@ -72,7 +72,8 @@ public class PlayerController : MonoBehaviour
         agent.isStopped = false;
         //让人物转向攻击的目标
         transform.LookAt(attackTarget.transform);
-        //判断两者之间的距离（没有使用带有攻击距离的武器，暂时先用1）
+        //判断两者之间的距离
+        //TODO:没有使用带有攻击距离的武器，暂时先用1
         while (Vector3.Distance(attackTarget.transform.position,transform.position)>1)
         {
             agent.destination = attackTarget.transform.position;
