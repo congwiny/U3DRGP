@@ -9,8 +9,13 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent agent;
     private EnemyStates enemyStates;
 
+    //设置是巡逻的敌人还是站桩的敌人
+    public bool isGuard;
+
     [Header("Basic Settings")]
     public float sightRadius;
+
+    private GameObject attackTarget;
 
     void Awake()
     {
@@ -37,6 +42,18 @@ public class EnemyController : MonoBehaviour
             case EnemyStates.PATROL:
                 break;
             case EnemyStates.CHASE:
+                //TODO:追Player
+              
+                //TODO:在攻击范围内则攻击
+                //TODO:配合动画
+                if(!FoundPlayer())
+                {
+                    //TODO:拉脱回到上一个状态
+                }
+                else
+                {
+                    agent.destination = attackTarget.transform.position;
+                }
                 break;
             case EnemyStates.DEAD:
                 break;
@@ -52,9 +69,11 @@ public class EnemyController : MonoBehaviour
         {
             if (target.CompareTag("Player"))
             {
+                attackTarget = target.gameObject;
                 return true;
             }
         }
+        attackTarget = null;
         return false;
     }
 }
