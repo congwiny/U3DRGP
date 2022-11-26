@@ -54,8 +54,8 @@ public class EnemyController : MonoBehaviour
         if (FoundPlayer())
         {
             enemyStates = EnemyStates.CHASE;
-            Debug.Log("找到Player...");
         }
+        
         switch (enemyStates)
         {
             case EnemyStates.GUARD:
@@ -74,6 +74,8 @@ public class EnemyController : MonoBehaviour
                 {
                     //TODO:拉脱回到上一个状态
                     isFollow = false;
+                    //解决拉脱有延迟的问题，设置agent.destination为当前的坐标就可以了
+                    agent.destination = transform.position;
                 }
                 else
                 {
